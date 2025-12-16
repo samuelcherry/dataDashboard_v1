@@ -75,7 +75,20 @@ function demoSplit(arr) {
             (bucket.spendTotal/bucket.count).toFixed(2)
         );
     }
-    return Array.from(bucketMap.values());
+    const unordered = Array.from(bucketMap.values());
+    const genderOrder = ["M","W"];
+    const ageOrder = ["under 25","25-34","35-44","45-54","55+"];
+    
+    unordered.sort((a,b) => {
+    const genderCompare = 
+        genderOrder.indexOf(a.gender) - genderOrder.indexOf(b.gender);
+
+        if (genderCompare !== 0) return genderCompare;
+
+        return ageOrder.indexOf(a.ageGroup)- ageOrder.indexOf(b.ageGroup);
+    });
+
+    return unordered
 }
 
 module.exports = demoSplit;

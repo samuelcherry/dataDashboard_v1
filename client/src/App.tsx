@@ -16,20 +16,20 @@ function App() {
         
         const res = await fetch("http://localhost:3000/upload",{
             method: "POST",
-            body: formData    
-        });
-        
-        const json = await res.json();        
-
-        setData(json.data);
-        console.log("App data response: ", data);
+            body: formData   
+        })
+        .then((res) => res.json())
+        .then((data) => {
+        console.log("data_01: ", data);
+        setData(data);
+        })
         };
 
 return (
     	<>
 	        <div className="mainContainer"> 
 			    <Header uploadFile={uploadFile}/>
-			    <Dash/>
+			   {data &&  <Dash data = {data}/>}
             </div>
     	</>
 	)
