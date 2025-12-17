@@ -4,44 +4,26 @@ import { Chart, ArcElement, Tooltip, Legend}from 'chart.js/auto';
 Chart.register(ArcElement, Tooltip, Legend);
 
 
-interface PieChartProps {
-    data:{
-        processed: {spendAvg: number}[];
-        };
-    }
-
-
-const PieChart: React.FC<PieChartProps> = ({data}) => {
+const PieChart: React.FC = ({data, selection}) => {
     
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const chartRef = useRef<Chart | null>(null);
     
-    const data00 = data.data.processed[0].spendAvg
-    const data01 = data.data.processed[1].spendAvg
-    const data02 = data.data.processed[2].spendAvg
-    const data03 = data.data.processed[3].spendAvg
-    const data04 = data.data.processed[4].spendAvg
-    const data05 = data.data.processed[5].spendAvg
-    const data06 = data.data.processed[6].spendAvg
-    const data07 = data.data.processed[7].spendAvg
-    const data08 = data.data.processed[8].spendAvg
-    const data09 = data.data.processed[9].spendAvg
+    const data00 = data.data.processed[0][selection]
+    const data01 = data.data.processed[1][selection]
+    const data02 = data.data.processed[2][selection]
+    const data03 = data.data.processed[3][selection]
+    const data04 = data.data.processed[4][selection]
+    const data05 = data.data.processed[5][selection]
+    const data06 = data.data.processed[6][selection]
+    const data07 = data.data.processed[7][selection]
+    const data08 = data.data.processed[8][selection]
+    const data09 = data.data.processed[9][selection]
 
 
     useEffect(() => {
 
-   if(!canvasRef.current) return;
-
-   if(!data?.data?.processed || data.data.processed.length === 0) return;
-    console.log("useEffect");
-
     const ctx = canvasRef.current?.getContext("2d");
-    if(!ctx) return;
-
-    if(chartRef.current) chartRef.current.destroy();
-
-    const chartData = data.data.processed.map(item => item.spendAvg);
-
 
     chartRef.current = new Chart(ctx, {
         type:"pie",
@@ -94,12 +76,6 @@ const PieChart: React.FC<PieChartProps> = ({data}) => {
         });
         return () => chartRef.current?.destroy();
     }, [data]);
-
-    if(!data?.data?.processed || data.data.processed.length===0 ){
-        return(
-            <p className = "text-center text-grey-500 " >Loading...</p>
-        )
-    }
 
     return (
         <div className="container h-96  max-w-lg mx-auto p-6 bg-stone-100 rounded-lg shadow-lg">

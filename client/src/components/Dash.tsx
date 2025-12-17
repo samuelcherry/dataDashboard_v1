@@ -80,6 +80,7 @@ let avgSpend=""
                 <div className="bg-blue-600 w-250">
                     <PieChart
                         data={data}
+                        selection="count"
                     />
                 </div>
             </div>
