@@ -78,7 +78,9 @@ let avgSpend=""
                     </div>
                 </div>
                 <div className="bg-blue-600 w-250">
-                    <PieChart/>
+                    <PieChart
+                        data={data}
+                    />
                 </div>
             </div>
         </>
