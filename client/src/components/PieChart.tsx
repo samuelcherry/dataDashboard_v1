@@ -4,7 +4,7 @@ import { Chart, ArcElement, Tooltip, Legend}from 'chart.js/auto';
 Chart.register(ArcElement, Tooltip, Legend);
 
 
-const PieChart: React.FC = ({data, selection}) => {
+const PieChart: React.FC = ({data, selection,title}) => {
     
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const chartRef = useRef<Chart | null>(null);
@@ -80,7 +80,7 @@ const PieChart: React.FC = ({data, selection}) => {
     return (
         <div className="container h-96  max-w-lg mx-auto p-6 bg-stone-100 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold text-stone-700 text-center mb-4">
-                Traffic Pie Chart
+                {title}
             </h2>
             <canvas ref={canvasRef} width={500} height={500} />
         </div>
