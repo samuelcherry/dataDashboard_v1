@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react';
 import DashContainer from './DashContainer';
 import PieChart from "./PieChart";
-
+import BarChart from "./BarChart";
 
 type DashProps = {
     data: any;
 };
-
 
 export default function Dash ({data}: DashProps){
 	
@@ -19,28 +18,31 @@ let avgSpend=""
                 <div className = "flex justify-center bg-green-400 w-150">
                     <DashContainer data={data}/> 
                 </div>
-                <div className="bg-blue-600 w-250">
-                    <PieChart
-                        data={data}
-                        title="Total sales"
-                        selection="count"
-                    />
+                <div>
+                    <div className="w-250 m-5">
+                        <BarChart
+                            data={data}
+                            title="Sales per State"
+                            selection="spendTotal"
+                        />
+                    </div>
+                    <div className="bg-blue-600 flex flex-row justify-between">
+                        <div className="m-5">
+                            <PieChart
+                                data={data}
+                                title="Total sales"
+                                selection="count"
+                            />
+                        </div>
+                        <div className="m-5">
+                            <PieChart
+                                data={data}
+                                title="Total spend"
+                                selection="spendTotal"
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className="bg-blue-600 w-250">
-                    <PieChart
-                        data={data}
-                        title="Total spend"
-                        selection="spendTotal"
-                    />
-                </div>
-                <div className="bg-blue-600 w-250">
-                    <PieChart
-                        data={data}
-                        title="Average spend"
-                        selection="spendAvg"
-                    />
-                </div>
-                
             </div>
         </>
     );

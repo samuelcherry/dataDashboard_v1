@@ -5,8 +5,6 @@ type DashProps = {
     data: any;
 };
 
-
-
 export default function DashContainer({data}: DashProps) {
 
 let count = ""

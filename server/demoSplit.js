@@ -17,9 +17,6 @@ const state = {
     }
 }
 
-
-
-
 function initBucket() {
     return {
         gender:"",

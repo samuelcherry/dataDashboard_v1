@@ -86,7 +86,7 @@ function stateSplit(arr) {
         bucket.location = location;
         }
         ordered = Array.from(bucketMap.values());
-
+        ordered.sort((a,b) => a.location.localeCompare(b.location));
         return ordered
 
     }
