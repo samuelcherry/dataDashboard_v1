@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react'
-import { Chart, ArcElement, Tooltip, Legend}from 'chart.js/auto';
+import { Chart, ArcElement, Tooltip}from 'chart.js/auto';
 
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(ArcElement, Tooltip);
 
 
 const BarChart: React.FC = ({data, selection,title}) => {
@@ -78,56 +78,10 @@ const BarChart: React.FC = ({data, selection,title}) => {
             datasets: [
                 {
                     data:[
-                        data00,
-                        data01,
-                        data02,
-                        data03,
-                        data04,
-                        data05,
-                        data06,
-                        data07,
-                        data08,
-                        data09,
-                        data10,
-                        data11,
-                        data12,
-                        data13,
-                        data14,
-                        data15,
-                        data16,
-                        data17,
-                        data18,
-                        data19,
-                        data20,
-                        data21,
-                        data22,
-                        data23,
-                        data24,
-                        data25,
-                        data26,
-                        data27,
-                        data28,
-                        data29,
-                        data30,
-                        data31,
-                        data32,
-                        data33,
-                        data34,
-                        data35,
-                        data36,
-                        data37,
-                        data38,
-                        data39,
-                        data40,
-                        data41,
-                        data42,
-                        data43,
-                        data44,
-                        data45,
-                        data46,
-                        data47,
-                        data48,
-                        data49
+                        data00,data01,data02,data03,data04,data05,data06,data07,data08,data09,data10,data11,data12,
+                        data13,data14,data15,data16,data17,data18,data19,data20,data21,data22,data23,data24,data25,
+                        data26,data27,data28,data29,data30,data31,data32,data33,data34,data35,data36,data37,data38,
+                        data39,data40,data41,data42,data43,data44,data45,data46,data47,data48,data49
                         ],
                     backgroundColor: [
                         "#ff6384",
@@ -144,17 +98,20 @@ const BarChart: React.FC = ({data, selection,title}) => {
                     },
                 ],
             },
-            options:{    
-                responsive: true,
-                plugins: { legends: {position: "bottom"} },    
-            },
+             options: {
+                plugins:{
+                    legend: {
+                        display:false
+                    }
+                }
+            }
         });
         return () => chartRef.current?.destroy();
     }, [data]);
 
     return (
-        <div className="container justify-left h-150  p-6 bg-stone-100 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold text-stone-700 text-center mb-4">
+        <div className="container justify-left h-150 w-270 p-5 bg-white rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold text-stone-700 text-center">
                 {title}
             </h2>
             <canvas ref={canvasRef} className="flex justify-content-center"width={1000} height={500} />

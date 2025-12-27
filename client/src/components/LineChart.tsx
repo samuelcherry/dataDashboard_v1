@@ -1,8 +1,8 @@
 import {useEffect, useRef} from 'react';
 
-import {Chart, ArcElement, Tooltip, Legend} from 'chart.js/auto';
+import {Chart, ArcElement, Tooltip} from 'chart.js/auto';
 
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(ArcElement, Tooltip);
 
 const LineChart: React.FC = ({data, title, selection}) => {
 
@@ -10,7 +10,7 @@ const LineChart: React.FC = ({data, title, selection}) => {
     const chartRef = useRef<Chart | null>(null);
 
     const Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    
+ 
     const monthSplit = data.data.processed.dateSplit
     const data00 = monthSplit[0][selection]
     const data01 = monthSplit[1][selection]
@@ -65,20 +65,23 @@ const LineChart: React.FC = ({data, title, selection}) => {
                     },
                 ],
             },
-            options:{
-                responsive:true,
-                plugins: {legends: {position: "bottom"} },
-            },
+            options: {
+                plugins:{
+                    legend: {
+                        display:false
+                    }
+                }
+            }
         });
         return () => chartRef.current?.destroy();
     },[]);
 
     return (
-        <div className="container justify-left h-150 p bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold text-stone-700 text-center" >
+        <div className="justify-left bg-white rounded-lg shadow-lg p-5 w-270 h-150">
+            <h2 className="text-xl font-bold text-stone-600 text-center" >
                 Sales Over Time
             </h2>
-        <canvas ref={canvasRef} />
+            <canvas ref={canvasRef} />
         </div>
     );
 };

@@ -48,11 +48,9 @@ function monthSplit(arr) {
         bucket.month = month;
         }        
         ordered= Array.from(bucketMap.values());
-        console.log("unordered: ",ordered);
-         ordered.sort((a,b) => {
+        ordered.sort((a,b) => {
             return (monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month));
         });
-        console.log("ordered: ",ordered);
         return ordered
     }
 module.exports = monthSplit;

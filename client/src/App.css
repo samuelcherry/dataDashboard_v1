@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
+:root {
+    background-color: #ECF0F1;
+
+}
 
 .mainContainer {
     display:flex;
     flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header {

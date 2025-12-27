@@ -78,11 +78,11 @@ const PieChart: React.FC = ({data, selection,title}) => {
     }, [data]);
 
     return (
-        <div className="container h-110 mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold text-stone-700 text-center mb-4">
+        <div className="flex flex-col items-center h-150 w-120 p-5 bg-white rounded-lg shadow-lg mb-5 pt-10">
+            <h1 className="text-5xl font-bold text-stone-600 text-center mb-10">
                 {title}
-            </h2>
-            <canvas ref={canvasRef} width={500} height={500} />
+            </h1>
+            <canvas ref={canvasRef} width={400} height={400} />
         </div>
     );
 };
