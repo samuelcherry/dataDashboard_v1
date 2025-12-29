@@ -24,3 +24,4 @@ You can upload the sample customer_data_10k.csv using the Browse button.
 
 Or upload any CSV file that follows the required formatting
 (see data format picture below).
+![Data format example](./images/data-format.png)
