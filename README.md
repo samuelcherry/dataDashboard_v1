@@ -99,18 +99,17 @@ The processed outputs are combined into a single structured object and returned 
   }
 }
 ```
-```
-```
+
 This response format is designed to be easily consumed by frontend visualizations such as charts and dashboards.
 5. Cleanup
 
 After processing completes, the temporary uploaded file is deleted from disk to prevent storage buildup and keep the server stateless.
 Design Notes
 
-    Streaming-based CSV parsing avoids memory bottlenecks.
+  Streaming-based CSV parsing avoids memory bottlenecks.
 
-    Modular transformation functions allow new analytics to be added without changing the core pipeline.
+  Modular transformation functions allow new analytics to be added without changing the core pipeline.
 
-    CORS-enabled API supports frontend frameworks like React.
+  CORS-enabled API supports frontend frameworks like React.
 
-    Stateless request handling ensures each upload is processed independently.
+  Stateless request handling ensures each upload is processed independently.
